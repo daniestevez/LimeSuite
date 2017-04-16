@@ -1089,6 +1089,9 @@ static int TBB_LPFH_FILTNUM = 600;
 
 int LMS7002M::TuneTxFilterWithCaching(const float_type bandwidth)
 {
+    // Dirty fix: disable filter caching. It doesn't seem to work properly
+    return this->TuneTxFilter(bandwidth);
+  
     int ret = 0;
     bool found = true;
     const int idx = this->GetActiveChannelIndex();
@@ -1155,6 +1158,9 @@ int LMS7002M::TuneTxFilterWithCaching(const float_type bandwidth)
 
 int LMS7002M::TuneRxFilterWithCaching(const float_type bandwidth)
 {
+    // Dirty fix: disable filter caching. It doesn't seem to work properly
+    return this->TuneRxFilter(bandwidth);
+    
     int ret = 0;
     bool found = true;
     const int idx = this->GetActiveChannelIndex();

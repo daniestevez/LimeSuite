@@ -2448,13 +2448,12 @@ int LMS7002M::SetRxDCRemoval(const bool enable)
 {
     this->Modify_SPI_Reg_bits(LMS7param(DC_BYP_RXTSP), enable?0:1);
     this->Modify_SPI_Reg_bits(LMS7param(DCCORR_AVG_RXTSP), 0x7);
-
     return 0;
 }
 
 bool LMS7002M::GetRxDCRemoval(void)
 {
-    return true;
+    return this->Get_SPI_Reg_bits(LMS7param(DC_BYP_RXTSP)) == 0;
 }
 
 int LMS7002M::SetTxDCOffset(const float_type I, const float_type Q)
